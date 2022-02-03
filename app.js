@@ -6,30 +6,24 @@ const lodash = require('lodash');
 const app = express();
 
 app.set('view engine', 'ejs');
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 const homeRoute = require('./routes/home');
 const aboutRoute = require('./routes/about');
 const contactRoute = require('./routes/contact');
+const composeRoute = require('./routes/compose');
 
 app.use('/', homeRoute);
 app.use('/about', aboutRoute);
 app.use('/contact', contactRoute);
+app.use('/compose', composeRoute);
 
-app.get('/compose', function (req, res) {
-  res.render('compose');
-});
+let posts = [];
 
-app.post('/compose', function (req, res) {
-  const post = {
-    title: req.body.postTitle,
-    content: req.body.postBody
-  };
-  posts.push(post);
-  res.redirect('/');
-});
+app.locals = {
+  posts: posts
+};
 
 app.get('/posts/:postTitle', function (req, res) {
   const requestedPostTitle = req.params.postTitle;
