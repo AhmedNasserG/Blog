@@ -6,7 +6,7 @@
 <% for(const post of posts) { %> 
     <div class="post-tile">
         <h1><%= post.title %> </h1>
-        <p><%= post.content.substring(0,100)+" ... " %><a href="/posts/<%= post.title %> ">Read More</a> </p>
+        <p><%= post.content.substring(0,100)+" ... " %><a href="/posts/<%= post._id%> ">Read More</a> </p>
     </div>
 <% } %> 
 

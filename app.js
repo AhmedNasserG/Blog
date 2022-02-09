@@ -21,13 +21,7 @@ app.use('/', homeRoute);
 app.use('/about', aboutRoute);
 app.use('/contact', contactRoute);
 app.use('/compose', composeRoute);
-app.use('/posts/:postTitle', postRoute);
-
-let posts = [];
-
-app.locals = {
-  posts: posts
-};
+app.use('/posts/:postId', postRoute);
 
 app.listen(3000, function () {
   console.log('Server started on port 3000');

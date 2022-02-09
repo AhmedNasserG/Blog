@@ -1,27 +1,19 @@
 const express = require('express');
 const router = express.Router({ mergeParams: true });
 const _ = require('lodash');
+const Post = require('../database/postModel');
 
 router.get('/', (req, res) => {
-  const requestedPostTitle = req.params.postTitle;
-  const post = getPost(requestedPostTitle, req.app.locals.posts);
-  if (post !== null) {
-    res.render('post', { post: post });
-  } else {
-    res.redirect('/');
-  }
-});
-
-function getPost(title, posts) {
-  title = _.lowerCase(title);
-  var post = null;
-  posts.forEach(function (item) {
-    var itemTitle = _.lowerCase(item.title);
-    if (title === itemTitle) {
-      post = item;
+  postId = req.params.postId;
+  Post.findOne({ _id: postId }, function (err, post) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render('post', {
+        post: post
+      });
     }
   });
-  return post;
-}
+});
 
 module.exports = router;
