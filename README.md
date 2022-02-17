@@ -58,6 +58,112 @@ This project was built using the following technologies:
 
 ```
 
+## API Reference
+
+1. `api/posts/`
+
+- `GET`
+
+```
+// Response body
+[
+    {
+        "_id": "620bbc06bf6c71cb481c32f9",
+        "title": "Day 1",
+        "content": "Lorem Ipsum is .....",
+        "__v": 0
+    },
+    {
+        "_id": "620bbc3dbf6c71cb481c32fe",
+        "title": "Day 2",
+        "content": "It is ....",
+        "__v": 0
+    }
+]
+```
+
+- `POST`
+
+```
+// Request body
+{
+    "title": "Day 3",
+    "content": "It is ...."
+}
+```
+
+```
+// Response
+the post has been added
+OR
+error message
+```
+
+- `DELETE`
+
+```
+// Response
+the post has been deleted
+OR
+error message
+```
+
+2. `api/posts/:postId`
+
+- `GET`
+
+```
+// Response
+{
+    "_id": "620bbc06bf6c71cb481c32f9",
+    "title": "Day 1",
+    "content": "Lorem Ipsum is .....",
+    "__v": 0
+}
+```
+
+- `PUT`
+
+```
+// Request body
+{
+    "title": "Day 1",
+    "content": "Lorem Ipsum is ....."
+}
+```
+
+```
+// Response
+the post has been updated
+OR
+error message
+```
+
+- `PATCH`
+
+```
+// Request body
+{
+    "title": "Day 1"
+}
+```
+
+```
+// Response
+the post has been updated
+OR
+error message
+```
+
+- `DELETE`
+
+```
+// Response
+the post has been deleted
+OR
+error message
+```
+
 ## Installation
 
 1. In order to run the project, you need to install the following:
