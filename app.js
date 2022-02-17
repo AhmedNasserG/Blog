@@ -16,13 +16,15 @@ const aboutRoute = require('./routes/about');
 const contactRoute = require('./routes/contact');
 const composeRoute = require('./routes/compose');
 const postRoute = require('./routes/post');
+const apiRoute = require('./routes/api');
 
 app.use('/', homeRoute);
 app.use('/about', aboutRoute);
 app.use('/contact', contactRoute);
 app.use('/compose', composeRoute);
 app.use('/posts/:postId', postRoute);
+app.use('/api', apiRoute);
 
 app.listen(3000, function () {
-  console.log('Server started on port 3000');
+	console.log('Server started on port 3000');
 });
